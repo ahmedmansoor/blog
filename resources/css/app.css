@@ -1,0 +1,13 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@layer base {
+    @font-face {
+        font-family: Calistoga;
+        font-weight: 400;
+        src: url("../fonts/Calistoga-Regular.ttf");
+    }
+}
