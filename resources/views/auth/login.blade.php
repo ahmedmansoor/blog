@@ -2,7 +2,7 @@
 
 @section('content')
 <main class="sm:container sm:mx-auto sm:max-w-lg pt-36 mx-5">
-    <div class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-md shadow  sm:px-6 md:px-8 lg:px-10 mb-24">
+    <div class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-md shadow sm:px-6 md:px-8 lg:px-10 mb-24">
         <div class="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl">
             Login To Your Account
         </div>

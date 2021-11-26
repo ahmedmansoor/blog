@@ -7,6 +7,7 @@ module.exports = {
             },
             fontFamily: {
                 heading: ["Calistoga", "sarif"],
+                normal: ["Nunito", "sarif"],
             },
             colors: {
                 primary: "#C9564E",

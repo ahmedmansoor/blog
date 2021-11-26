@@ -17,7 +17,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
-<header class="text-gray-600 body-font shadow-sm bg-white py-3 sm:py-4 z-50 fixed w-screen">
+<header class="text-gray-600 body-font shadow-sm bg-white py-3 sm:py-4 z-50 fixed w-screen px-5 font-normal">
     <div class="container  items-center  justify-between  mx-auto flex px-6">
         <!-- <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
@@ -31,19 +31,23 @@
             <a href="{{ url('/') }}" class="ml-3 text-xl font-semibold no-underline">
                 {{ config('app.name', 'Blog') }}
             </a>
+            <a href={{route('post.index')}}
+                class="h-9 px-4 pt-1.5 sm:pt-1 md:w-auto tracking-wide text-primary  transition-colors duration-200 border border-primary rounded">Explore</a>
         </div>
-        <nav class="space-x-4 md:ml-auto flex flex-wrap items-center justify-center text-sm sm:text-base">
+        <nav class=" space-x-4 md:ml-auto flex flex-wrap items-center justify-center text-sm sm:text-base">
             @guest
             <a class="h-9 px-4 pt-1.5 sm:pt-1 md:w-auto tracking-wide text-primary  transition-colors duration-200 border border-primary rounded"
                 href="{{ route('login') }}">{{ __('Login') }}</a>
             @if (Route::has('register'))
-            <a class="h-9 px-4 pt-1.5 sm:pt-1 tracking-wide text-white transition duration-200 rounded md:w-auto bg-primary hover:bg-primarydark"
+            <a class="h-9 px-4 pt-1.5 tracking-wide text-white transition duration-200 rounded md:w-auto bg-primary hover:bg-primarydark"
                 href="{{ route('register') }}">{{ __('Sign Up') }}</a>
             @endif
             @else
+            <a href={{route('post.create')}}
+                class="h-9 px-4 pt-1.5 tracking-wide text-white transition duration-200 rounded md:w-auto bg-primary hover:bg-primarydark">Upload</a>
             <span>{{ Auth::user()->name }}</span>
 
-            <a href="{{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
+            <a href=" {{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                 {{ csrf_field() }}
@@ -53,13 +57,13 @@
     </div>
 </header>
 
-<body class="bg-gray-100 min-h-screen antialiased leading-none font-sans">
-    <div id="app">
+<body class="min-h-screen antialiased leading-none font-sans">
+    <div id="app" class="px-10">
         @yield('content')
     </div>
 </body>
 
-<footer class="bg-gray-900 z-50"">
+<footer class="bg-gray-900 z-50 mt-16"">
     <!-- <h2 id=" footer-heading" class="sr-only">Footer</h2> -->
     <div class="py-5 mx-auto max-w-7xl sm:px-6 lg:px-16">
         <div class="flex flex-wrap items-baseline lg:justify-center">
