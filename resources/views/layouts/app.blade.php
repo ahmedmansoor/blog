@@ -31,8 +31,8 @@
             <a href="{{ url('/') }}" class="ml-3 text-xl font-semibold no-underline">
                 {{ config('app.name', 'Blog') }}
             </a>
-            <a href={{route('post.index')}}
-                class="h-9 px-4 pt-1.5 sm:pt-1 md:w-auto tracking-wide text-primary  transition-colors duration-200 border border-primary rounded">Explore</a>
+            <a href={{ url('/') }} class="h-9 px-4 pt-1.5 sm:pt-1 md:w-auto tracking-wide">Home</a>
+            <a href={{route('post.index')}} class="h-9 pt-1.5 sm:pt-1 md:w-auto tracking-wide">Explore</a>
         </div>
         <nav class=" space-x-4 md:ml-auto flex flex-wrap items-center justify-center text-sm sm:text-base">
             @guest
@@ -45,8 +45,7 @@
             @else
             <a href={{route('post.create')}}
                 class="h-9 px-4 pt-1.5 tracking-wide text-white transition duration-200 rounded md:w-auto bg-primary hover:bg-primarydark">Upload</a>
-            <span>{{ Auth::user()->name }}</span>
-
+            <a href={{route('profile')}}>{{ Auth::user()->name }}</a>
             <a href=" {{ route('logout') }}" class="no-underline hover:underline" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">

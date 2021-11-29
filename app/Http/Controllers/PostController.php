@@ -16,20 +16,48 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = post::where('user_id', 1)->count();
-        $postCount = post::count();
-        $posts = post::all();
+        // $post = post::where('user_id', 1)->count();
+        // $postCount = post::count();
+        $posts = post::orderBy('created_at', 'desc')->get();
+        // $posts = post::all();
+        return view('allpost')->with('posts', $posts);
 
         // return $post;
 
 
-        return view('allpost')->with('posts', $posts);
-        $posts = post::all();
-        $sample = User::where('name', "Ahmed Mansoor")->first();
-        return $sample;
+        // $posts = post::all();
+        // $posts = post::all();
+        // $sample = User::where('name', "Ahmed Mansoor")->first();
+        // return $sample;
 
-        $posts = post::where('user_id', Auth()->user()->id)->get();
-        return view('createpost')->with('posts', $posts);
+        // $posts = post::where('user_id', Auth()->user()->id)->get();
+        // return view('createpost')->with('posts', $posts);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        // $post = post::where('user_id', 1)->count();
+        // $postCount = post::count();
+        // $posts = post::all();
+        // return $post;
+
+
+        // return view('allpost')->with('posts', $posts);
+        // $posts = post::all();
+        // $sample = User::where('name', "Ahmed Mansoor")->first();
+        // return $sample;
+
+        // $posts = post::orderBy('created_at', 'desc')->get();
+        $posts = post::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->get();
+        return view('profile')->with('posts', $posts);
+        $posts = post::all();
+        return $posts;
+        // return view('createpost')->with('posts', $posts);
     }
 
     /**

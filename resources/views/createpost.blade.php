@@ -44,7 +44,7 @@
                         Image Preview
                     </h1>
 
-                    <ul id="gallery" class="flex flex-1 flex-wrap -m-1">
+                    <ul id="gallery" class="justify-center flex flex-1 flex-wrap -m-1">
                         <li id="empty" class="w-full text-center flex flex-col items-center justify-center">
                             <img class="mx-auto w-32"
                                 src="https://user-images.githubusercontent.com/507615/54591670-ac0a0180-4a65-11e9-846c-e55ffce0fe7b.png"
@@ -52,14 +52,13 @@
                             <span class="text-small text-gray-500">No file selected</span>
                         </li>
                     </ul>
-                    <!-- <button id="cancel" class="text-primary">Cancel</button> -->
-                    <!-- <button id="submit"
-                    class="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none">
-                    Upload now
-                </button> -->
                     <div class="flex justify-center h-10 w-full border border-primary rounded-md mt-5 sm:mt-0">
-                        <button type="reset" id="cancel" class="px-3 py-1 text-primary">
+                        <button id="cancel" class="px-3 py-1 text-primary">
                             Cancel
+                        </button>
+                        <button id="submit"
+                            class="hidden rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none">
+                            Upload now
                         </button>
                     </div>
                 </div>
@@ -67,11 +66,10 @@
         </div>
     </div>
 
-    <!-- ehfbdu -->
     <!-- component -->
 
     <!-- using two similar templates for simplicity in js code -->
-    <template id="file-template">
+    <!-- <template id="file-template">
         <li class="block p-1 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 h-24">
             <article tabindex="0"
                 class="group w-full h-full rounded-md focus:outline-none focus:shadow-outline bg-gray-100 cursor-pointer relative shadow-sm">
@@ -103,12 +101,12 @@
                 </section>
             </article>
         </li>
-    </template>
+    </template> -->
 
     <template id="image-template">
         <li class="block p-1 w-48 h-32">
             <article tabindex="0"
-                class="group hasImage w-full h-full rounded-md focus:outline-none focus:shadow-outline bg-gray-100 cursor-pointer relative text-transparent hover:text-white shadow-sm">
+                class="justify-center group hasImage w-full h-full rounded-md focus:outline-none focus:shadow-outline bg-gray-100 cursor-pointer relative text-transparent hover:text-white shadow-sm">
                 <img alt="upload preview" class="img-preview w-full h-full sticky object-cover rounded-md bg-fixed" />
 
                 <section

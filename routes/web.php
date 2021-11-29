@@ -24,9 +24,10 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::group(['prefix' => 'post'], function () {
 
     Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
-    Route::get('/create', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
     Route::post('/store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
     Route::post('/update', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
     Route::get('/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
     Route::get('/{id}/{mansoor}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
 });
+Route::get('/editor', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+Route::get('/profile', [App\Http\Controllers\PostController::class, 'profile'])->name('profile');
