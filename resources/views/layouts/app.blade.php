@@ -56,8 +56,8 @@
     </div>
 </header>
 
-<body class="min-h-screen antialiased leading-none font-sans">
-    <div id="app" class="px-10">
+<body class="min-h-screen antialiased leading-none font-normal bg-gray-50">
+    <div id="app" class="px-4 sm:px-10">
         @yield('content')
     </div>
 </body>

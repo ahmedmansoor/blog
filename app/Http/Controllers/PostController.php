@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -97,6 +98,35 @@ class PostController extends Controller
         return redirect()->back()->with(session()->flash('alert-success', 'Post Added'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function comment(Request $request)
+    {
+        $comment = new Comment();
+        $comment->text =  $request->input('comment');
+        $comment->user_id = Auth()->user()->id;
+        $comment->post_id = $request->input('postid');
+        $comment->save();
+
+        $post = post::find($request->input('postid'));
+        return view('postdetail')->with('post', $post);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function modal($id)
+    {
+        $post = post::find($id);
+        return view('modal')->with('post', $post);
+    }
     /**
      * Display the specified resource.
      *

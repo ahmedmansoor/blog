@@ -18,7 +18,7 @@
                 <img class="w-full h-56 rounded" src="{{asset('/storage/postfolder/'.$post->image)}}">
                 <!-- <div class="px-4 py-2"> -->
                 <div class="py-2">
-                    <div class="font-semibold text-base mb-2  tracking-wide">{{$post->name}}</div>
+                    <div class="font-semibold text-base mb-2 tracking-wide">{{$post->name}}</div>
                     <p class="text-gray-700 text-sm">{{$post->detail}}</p>
                 </div>
                 <div class="pt-4 pb-2">
