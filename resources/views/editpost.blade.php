@@ -11,7 +11,6 @@
                 <form action="{{route('post.update')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <img src="{{asset('/storage/postfolder/'.$post->image)}}" width="100" height="100">
-
                     <input type="text" name="postname" value="{{$post->name}}">
                     <input type="text" name="detail" value="{{$post->detail}}">
                     <input type="file" name="image">
@@ -20,8 +19,6 @@
                     <input type="submit" value="SUBMIT">
                 </form>
                 <!-- table -->
-
-
             </div>
         </div>
     </div>

@@ -31,5 +31,8 @@ Route::group(['prefix' => 'post'], function () {
 });
 Route::get('/editor', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
 // Route::get('/{id}', [App\Http\Controllers\PostController::class, 'modal'])->name('post.modal');
-Route::post('/comment', [App\Http\Controllers\PostController::class, 'comment'])->name('post.comment');
+Route::post('/', [App\Http\Controllers\PostController::class, 'comment'])->name('post.comment');
 Route::get('/profile', [App\Http\Controllers\PostController::class, 'profile'])->name('profile');
+
+Route::post('/', [App\Http\Controllers\PostController::class, 'like'])->name('post.like');
+Route::post('/{id}', [App\Http\Controllers\PostController::class, 'unlike'])->name('post.unlike');

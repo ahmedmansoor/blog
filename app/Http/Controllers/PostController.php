@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -99,7 +100,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Comment.
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
@@ -107,17 +108,70 @@ class PostController extends Controller
     public function comment(Request $request)
     {
         $comment = new Comment();
-        $comment->text =  $request->input('comment');
+        $comment->comment =  $request->input('comment');
         $comment->user_id = Auth()->user()->id;
         $comment->post_id = $request->input('postid');
         $comment->save();
 
-        $post = post::find($request->input('postid'));
-        return view('postdetail')->with('post', $post);
+        // $post = post::find($request->input('postid'));
+        // return redirect()->route('post.show')->with('post', $post);
+        return redirect()->back()->with(session()->flash('alert-success', 'Post Updated'));
     }
 
     /**
-     * Display the specified resource.
+     * Like a post
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Request $request)
+    {
+
+        $like = new Like();
+        $like->like =  $request->input('like');
+        $like->user_id = Auth()->user()->id;
+        $like->post_id = $request->input('postid');
+        $like->save();
+
+        return redirect()->back()->with(session()->flash('alert-success', 'Post Liked successfully!'));
+    }
+
+    /**
+     *Unlike a post
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function unlike($id)
+    {
+        // $like = post::find($id);
+
+        $like = Like::where('user_id', Auth()->user()->id)->where('post_id', $id);
+        $like->delete();
+        // $like->update(['like' => null]);
+
+        return redirect()->back()->with(session()->flash('alert-success', 'Post Unliked successfully!'));
+    }
+
+
+
+    /**
+     * unLike a post
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function unlikee($id)
+    {
+        $post = Post::find($id);
+        $post->unlike();
+        $post->save();
+
+        return redirect()->route('post.list')->with('message', 'Post Like undo successfully!');
+    }
+
+    /**
+     * Display the modal
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
