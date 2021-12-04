@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container pt-36 font-normal">
-    <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('post.upload')}}" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
         <input type="text" name="postname" placeholder="postname">
         <input type="text" name="detail" placeholder="detail">
@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="card p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach($posts as $post)
-            <div class="max-w-sm rounded overflow-hidden">
+            <div class="max-w-sm rounded overflow-hidden mt-10">
                 <img class="w-full h-56 rounded" src="{{asset('/storage/postfolder/'.$post->image)}}">
                 <!-- <div class="px-4 py-2"> -->
                 <div class="py-2">

@@ -24,14 +24,14 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::group(['prefix' => 'post'], function () {
 
     Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
-    Route::post('/store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+    Route::post('/upload', [App\Http\Controllers\PostController::class, 'store'])->name('post.upload');
     Route::post('/update', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
     Route::get('/{id}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-    Route::get('/{id}/{mansoor}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
+    Route::get('/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
 });
-Route::get('/editor', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
+Route::get('/newpost', [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
 // Route::get('/{id}', [App\Http\Controllers\PostController::class, 'modal'])->name('post.modal');
-Route::post('/', [App\Http\Controllers\PostController::class, 'comment'])->name('post.comment');
+Route::post('/comment', [App\Http\Controllers\PostController::class, 'comment'])->name('post.comment');
 Route::get('/profile', [App\Http\Controllers\PostController::class, 'profile'])->name('profile');
 
 Route::post('/', [App\Http\Controllers\PostController::class, 'like'])->name('post.like');

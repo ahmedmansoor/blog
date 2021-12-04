@@ -1,41 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container pt-36 font-normal">
-    <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
-        {{csrf_field()}}
-        <input type="text" name="postname" placeholder="postname">
-        <input type="text" name="detail" placeholder="detail">
-        <input type="file" name="image" placeholder="image">
-        <input type="submit" value="SUBMIT">
-    </form>
-
+<div class="container pt-20 font-normal">
     <div class="row justify-content-center">
         <div class="card p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             <!-- cards -->
             @foreach($posts as $post)
-            <div class="max-w-sm rounded overflow-hidden">
-                <img class="w-full h-56 rounded" src="{{asset('/storage/postfolder/'.$post->image)}}">
+            <div class="max-w-sm rounded overflow-hidden mt-5">
+                <a href="{{route('post.edit',['id'=>$post->id])}}">
+                    <img class="w-full h-56 rounded" src="{{asset('/storage/postfolder/'.$post->image)}}">
+                </a>
                 <!-- <div class="px-4 py-2"> -->
+                <button
+                    class="float-right flex flex-row bg-gray-200 hover:bg-gray-300 rounded-md px-3 py-1 my-2 text-sm font-semibold text-gray-700 mr-2 mb-2 w-min-content space-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    <a href="{{route('post.edit',['id'=>$post->id])}}">Edit</a>
+                </button>
                 <div class="py-2">
                     <div class="font-semibold text-base mb-2 tracking-wide">{{$post->name}}</div>
                     <p class="text-gray-700 text-sm">{{$post->detail}}</p>
                 </div>
-                <div class="pt-4 pb-2">
+                <p class="text-gray-400 text-xs">{{ $post->created_at->diffForHumans() }}</p>
+                <!-- <div class="pt-4 pb-2">
                     <div
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        {{$post->users->name}}
-                    </div>
-                    <div
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        <a href="{{route('post.show',['id'=>$post->id])}}">View</a>
-                    </div>
-                    <div
-                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        class="flex flex-row bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 w-min-content space-x-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
                         <a href="{{route('post.edit',['id'=>$post->id, 'mansoor'=>0])}}">Edit</a>
                     </div>
-                </div>
-                <p class="text-gray-700 text-sm">{{ $post->created_at->diffForHumans() }}</p>
+                </div> -->
             </div>
             @endforeach
         </div>

@@ -25,7 +25,7 @@
                             <path d="M10 16l-6-6 6-6" />
                             <path d="M20 21v-7a4 4 0 0 0-4-4H5" />
                         </svg>
-                        <a href={{route('post.index')}} class="px-1"> Go back </a>
+                        <a href={{ url()->previous() }}> Go back </a>
                     </button>
                     <div class="flex flex-row place-content-between">
                         <p class="text-xl font-bold">{{$post->name}}</p>
@@ -38,7 +38,7 @@
                     </p>
                     <div class="bg-gray-200 sm:bg-white">
                         <p class="text-lg font-bold mb-3 mt-5 sm:mt-10">Feedback</p>
-                        <form action="{{ Route('post.comment') }}" method="POST" class="mt-3 mb-6 space-y-2">
+                        <form action="{{route('post.comment') }}" method="POST" class="mt-3 mb-6 space-y-2">
                             @csrf
                             <input hidden name="postid" value="{{$post->id}}">
                             <input id="comment" name="comment" type="text" placeholder="Comment on this post"
@@ -48,7 +48,6 @@
                         </form>
 
                         <div class="lg:h-72 overflow-y-auto lg:pr-3">
-                            @if($post->comments != null)
                             @foreach($post->comments as $comment)
                             <div class="mt-3 mb-3 border rounded-lg px-4 py-3 text-sm">
                                 <p class="font-semibold"> {{$comment->users->name}}</p>
@@ -56,11 +55,6 @@
                                 <p class="text-gray-400 text-xs">{{ $comment->created_at->diffForHumans() }}
                             </div>
                             @endforeach
-                            @else
-                            <div class="mt-3 mb-3 border rounded-lg px-4 py-3">
-                                <p>No comments</p>
-                            </div>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -69,9 +63,4 @@
     </div>
 </div>
 
-<style>
-.container {
-    scrollbar-width: thin;
-}
-</style>
 @endsection

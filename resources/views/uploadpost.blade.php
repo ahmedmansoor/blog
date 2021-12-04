@@ -8,12 +8,12 @@
         <div
             class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-xl shadow px-3 py-5 border border-gray-200">
             <div class="sm:flex sm:flex-row">
-                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('post.upload')}}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="flex flex-col space-y-3 sm:w-72 mx-1">
-                        <input type="text" name="postname" placeholder="Title"
+                        <input type="text" name="postname" placeholder="Title" required
                             class="border border-gray-200 text-base w-full rounded-md py-2 px-2 focus:outline-none focus:border-gray-200 focus:bg-gray-100">
-                        <input type="text" name="detail" placeholder="Type something here"
+                        <input type="text" name="detail" placeholder="Type something here" required
                             class="w-full border border-gray-200 text-base rounded-md py-2 px-2 focus:outline-none focus:border-gray-200 focus:bg-gray-100">
                         <!-- <input type="file" name="image" placeholder="image"> -->
                         <!-- <div class="overflow-auto p-8 w-full flex flex-col"> -->
@@ -25,7 +25,8 @@
                                 <p class="mb-3 text-gray-400 flex flex-wrap justify-center">
                                     <span>Drag and drop your</span>&nbsp;<span>file anywhere or</span>
                                 </p>
-                                <input id="hidden-input" name="image" type="file" class="h-full w-full opacity-0" />
+                                <input id="hidden-input" name="image" type="file" class="h-full w-full opacity-0"
+                                    required />
                                 <div id="button"
                                     class="mt-2 rounded-md px-3 py-2 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
                                     Upload a file
